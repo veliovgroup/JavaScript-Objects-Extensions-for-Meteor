@@ -74,6 +74,16 @@ Tinytest.add('object.js: Object.inArray()', function (test) {
   test.isFalse(array.inArray(123));
 });
 
+Tinytest.add('object.js: Object.diff()', function (test) {
+  var array = ['someValue', 'some2Value', 'otherNestedValue'];
+
+  test.isTrue(array.diff(['veryNestedValue', 'some2Value'], true));
+  test.isFalse(array.diff(['123', 'asdf', 'sdfadf'], true));
+
+  test.equal(array.diff(['veryNestedValue', 'some2Value']), ['some2Value']);
+  test.equal(array.diff(['123', 'asdf', 'sdfadf']), []);
+});
+
 Tinytest.add('regexp.js: RegExp.escape()', function (test) {
   var string = '*/;Danger_==+ Value.()-';
 

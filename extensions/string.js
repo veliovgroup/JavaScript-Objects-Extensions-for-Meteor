@@ -58,7 +58,7 @@ String.generate = function(length, symbols){
  * 
  */
 String.rand = function(length, symbols){
-  if(typeof length === 'boolean'){
+  if(typeof length === 'boolean' && length === true){
     length = Math.getRandom(2,111);
     symbols = undefined;
   }else{

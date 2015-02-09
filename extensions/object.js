@@ -52,6 +52,40 @@ Object.defineReactiveProperty = function (target, prop, value, callback, getCall
 
 /*
  * @function
+ * @name Object.prototype.diff
+ * @description Extend Object prototype within diff function | Compare two arrays, and return matches if found
+ *
+ * @param {array}  comparable  - Comparable array
+ * @param {bool}   hasMatches  - Return boolean if both arrays has matches?
+ *
+ */
+Object.defineProperty(Object.prototype, 'diff',{
+    value: function(comparable, hasMatches){
+        if(!hasMatches){
+            hasMatches = false;
+        }
+
+        var matches = [];
+
+        this.sort();
+        comparable.sort();
+
+        for(var i = 0; i < this.length; i += 1) {
+            if(comparable.indexOf(this[i]) > -1){
+                matches.push(this[i]);
+            }
+        }
+
+        return (hasMatches) ? (matches.length !== 0) : matches;
+    },
+    writable: true,
+    configurable: true,
+    enumerable: false
+});
+
+
+/*
+ * @function
  * @name Object.prototype.inArray
  * @description Extend Object prototype within inArray function
  *
