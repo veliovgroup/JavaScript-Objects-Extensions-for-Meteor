@@ -61,6 +61,11 @@ Object.defineReactiveProperty = function (target, prop, value, callback, getCall
  */
 Object.defineProperty(Object.prototype, 'diff',{
     value: function(comparable, hasMatches){
+
+        if(Object.prototype.toString.call(comparable) !== '[object Array]' || Object.prototype.toString.call(this) !== '[object Array]'){
+            return undefined;
+        }
+
         if(!hasMatches){
             hasMatches = false;
         }
@@ -98,6 +103,11 @@ Object.defineProperty(Object.prototype, 'inArray',{
     value: function(needle, searchInKey, searchByKey){
         var plain = [];
         var object = this;
+
+        if( Object.prototype.toString.call(object) !== '[object Object]' && 
+            Object.prototype.toString.call(object) !== '[object Array]'){
+            return undefined;
+        }
         
         if( Object.prototype.toString.call(needle) === '[object Object]' || 
             Object.prototype.toString.call(needle) === '[object Array]'){
@@ -241,6 +251,10 @@ Object.Merge = function(target, src) {
  */
 Object.defineProperty(Object.prototype, 'random',{
     value: function(){
+        if( Object.prototype.toString.call(this) !== '[object Object]' && 
+            Object.prototype.toString.call(this) !== '[object Array]'){
+            return undefined;
+        }
         return this[Math.floor(Math.random() * this.length)];
     }
 });
