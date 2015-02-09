@@ -40,8 +40,31 @@ String.generate = function(length, symbols){
   var x = '';
 
   for (var i = 0; i < length; i++) {
-    x = x + symbols[Math.getRandom(0, max)];
+    x = x + symbols[(max === 0) ? 0 : Math.getRandom(0, max)];
   }
 
   return x;
+};
+
+/*
+ * @function
+ * @namespace String
+ * @name random
+ * 
+ * @description generate random string from 2 to 111 symbols length
+ * 
+ * @param {int} length - Set length of string
+ * @param {string} symbols - Symbols to be used
+ * 
+ */
+String.rand = function(length, symbols){
+  if(typeof length === 'boolean'){
+    length = Math.getRandom(2,111);
+    symbols = undefined;
+  }else{
+    length = length || Math.getRandom(2,111);
+    symbols = symbols || '1234567890QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm\..\\/\/?._+=-[]{}()*&^%$#@!±§,<>~`\'":;|';
+  }
+  
+  return String.generate(length, symbols);
 };

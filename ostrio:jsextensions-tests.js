@@ -82,7 +82,11 @@ Tinytest.add('regexp.js: RegExp.escape()', function (test) {
 
 Tinytest.add('string.js: String.generate()', function (test) {
 
-  test.equal('AAAAA', String.generate(5, 'AA'));
+  test.equal('AAAAA', String.generate(5, 'A'));
+});
+
+Tinytest.add('string.js: String.rand()', function (test) {
+  test.equal(50, String.rand(50).length);
 });
 
 Tinytest.add('string.js: String.clone()', function (test) {

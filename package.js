@@ -1,6 +1,6 @@
 Package.describe({
   name: 'ostrio:jsextensions',
-  version: '0.0.1',
+  version: '0.0.2',
   summary: 'Useful JavaScript Objects Extensions',
   git: 'https://github.com/VeliovGroup/JavaScript-Objects-Extensions-for-Meteor',
   documentation: 'README.md'
